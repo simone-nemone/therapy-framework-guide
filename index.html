@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Therapy Framework Decision Flowchart</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #4a5568;
+            margin-bottom: 10px;
+            font-size: 2.2em;
+            font-weight: 300;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #718096;
+            margin-bottom: 30px;
+            font-style: italic;
+            font-size: 1.1em;
+        }
+        
+        .flowchart {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            align-items: center;
+        }
+        
+        .start-box {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: 500;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            max-width: 400px;
+        }
+        
+        .question-box {
+            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            font-weight: 600;
+            color: #2d3748;
+            max-width: 500px;
+            box-shadow: 0 8px 25px rgba(252, 182, 159, 0.3);
+            border-left: 5px solid #ed8936;
+        }
+        
+        .answer-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 15px 0;
+        }
+        
+        .answer-box {
+            background: white;
+            border: 2px solid #e2e8f0;
+            padding: 15px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            min-width: 150px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .answer-box:hover {
+            border-color: #667eea;
+            background: #f7fafc;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+        }
+        
+        .framework-box {
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 15px 0;
+            box-shadow: 0 8px 25px rgba(168, 237, 234, 0.3);
+            border-left: 5px solid #38b2ac;
+        }
+        
+        .framework-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+        
+        .framework-description {
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .quick-practice {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 3px solid #38b2ac;
+            font-style: italic;
+            color: #2d3748;
+        }
+        
+        .arrow {
+            font-size: 2em;
+            color: #667eea;
+            margin: 10px 0;
+        }
+        
+        .reset-button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .reset-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        .wisdom-note {
+            background: linear-gradient(135deg, #fee2e2, #fecaca);
+            border-left: 4px solid #f56565;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+            font-style: italic;
+            color: #2d3748;
+            line-height: 1.6;
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Therapy Framework Decision Guide</h1>
+        <p class="subtitle">A compassionate path through your therapeutic toolkit</p>
+        
+        <div class="flowchart">
+            <div class="start-box">
+                Pause. Breathe. Notice what's happening right now in your body and mind.
+            </div>
+            
+            <div class="arrow">↓</div>
+            
+            <div id="step1" class="question-box">
+                What is the most prominent feeling in your body/mind right this moment?
+            </div>
+            
+            <div class="answer-container">
+                <div class="answer-box" onclick="showResult('overwhelmed')">
+                    Overwhelmed, scattered, too much input
+                </div>
+                <div class="answer-box" onclick="showResult('activated')">
+                    Activated, angry, reactive, fight/flight
+                </div>
+                <div class="answer-box" onclick="showResult('stuck')">
+                    Stuck, frozen, heavy, shut down
+                </div>
+                <div class="answer-box" onclick="showResult('shame')">
+                    Shame, self-criticism, "not good enough"
+                </div>
+                <div class="answer-box" onclick="showResult('disconnect')">
+                    Disconnected from values, going through motions
+                </div>
+                <div class="answer-box" onclick="showResult('heightened')">
+                    Heightened emotions, everything feels intense
+                </div>
+                <div class="answer-box" onclick="showResult('teary')">
+                    Teary, sad, grief-like, tender
+                </div>
+                <div class="answer-box" onclick="showResult('panicky')">
+                    Panicky, anxious, racing thoughts
+                </div>
+            </div>
+            
+            <!-- Results for each path -->
+            <div id="result-overwhelmed" class="framework-box hidden">
+                <div class="framework-title">DBT Skills + Neurodivergent Accommodations</div>
+                <div class="framework-description">
+                    When your autistic nervous system is overloaded, you need regulation first, insight second. Your brain is doing exactly what it's supposed to do - protecting you from too much input.
+                </div>
+                <div class="quick-practice">
+                    <strong>Right now:</strong> Use your TIPP skills (Temperature - cold water on wrists, Intense exercise - 30 jumping jacks, Paced breathing - 4-7-8 breath, Paired muscle relaxation). Then implement your early warning system from your guide. Remember: this isn't weakness, it's neurology.
+                </div>
+            </div>
+            
+            <div id="result-activated" class="framework-box hidden">
+                <div class="framework-title">IFS Parts Work + DBT Distress Tolerance</div>
+                <div class="framework-description">
+                    A protective part of you is activated, likely your "Fire Fighter" trying to stop pain immediately. This part learned to react quickly to keep you safe, but it may be responding to old wounds in present situations.
+                </div>
+                <div class="quick-practice">
+                    <strong>Right now:</strong> "Thank you, Fire Fighter, for trying to protect me. I see you're scared/angry. I'm going to take care of this situation from my Self." Use STOP skill, then ask: "What does this part need to feel safe right now?" Often it's validation that the threat is real, even if the response is bigger than needed.
+                </div>
+            </div>
+            
+            <div id="result-stuck" class="framework-box hidden">
+                <div class="framework-title">Somatic Awareness + Self-Compassion</div>
+                <div class="framework-description">
+                    Your nervous system has shifted into dorsal vagal shutdown - a normal response to chronic overwhelm. Your body is conserving energy because it perceives threat. This often happens when the autistic nervous system has been pushed beyond capacity for too long.
+                </div>
+                <div class="quick-practice">
+                    <strong>Right now:</strong> Honor this shutdown as protective, not pathological. Gentle movement (swaying, stretching), warm beverage, soft textures. Say to yourself: "My body is trying to take care of me. I don't need to fight this feeling, just support myself through it." Recovery is non-linear - this is part of the process.
+                </div>
+            </div>
+            
+            <div id="result-shame" class="framework-box hidden">
+                <div class="framework-title">IFS Exile Work + Self-Compassion Practice</div>
+                <div class="framework-description">
+                    An exiled part of you - likely formed during years of masking and trying to fit neurotypical expectations - is feeling exposed and vulnerable. This part carries the pain of not being understood or accepted for who you truly are.
+                </div>
+                <div class="quick-practice">
+                    <strong>Right now:</strong> Place your hand on your heart and speak to this young part: "You are not bad or wrong. You were just different in a world that didn't understand. I see your worth, even when others couldn't." Remember: the shame belongs to systems that couldn't see your value, not to you. Your authentic self was always worthy of love.
+                </div>
+            </div>
+            
+            <div id="result-disconnect" class="framework-box hidden">
+                <div class="framework-title">ACT Values Clarification + Mindful Re-engagement</div>
+                <div class="framework-description">
+                    You've gotten caught in the "doing" trap - going through motions without connection to what matters most. This often happens when we're overwhelmed and slip into survival mode rather than values-based living.
+                </div>
+                <div class="quick-practice">
+                    <strong>Right now:</strong> Ask yourself: "In this moment, what kind of parent/partner/person do I want to be?" Not perfect, not neurotypical, but aligned with your deepest values. Choose one small action that moves you toward those values, even if you don't feel like it. Sometimes we act our way into feeling, not the other way around.
+                </div>
+            </div>
+            
+            <div id="result-heightened" class="framework-box hidden">
+                <div class="framework-title">Emotional Surfing + Somatic Regulation</div>
+                <div class="framework-description">
+                    Your autistic nervous system experiences emotions more intensely than neurotypical brains - this isn't dysregulation, it's a feature of how you're wired. The intensity can feel overwhelming because you're processing emotional information with more neural pathways activated.
+                </div>
+                <div class="quick-practice">
+                    <strong>Right now:</strong> Think of emotions like weather patterns - intense but temporary. Use the RAIN technique: Recognize what you're feeling, Allow it to be here without judgment, Investigate with kindness ("Where do I feel this in my body?"), Natural awareness ("This feeling will pass"). Your emotions are information, not emergencies.
+                </div>
+            </div>
+            
+            <div id="result-teary" class="framework-box hidden">
+                <div class="framework-title">Gentle Grief Work + Self-Compassion</div>
+                <div class="framework-description">
+                    Tears can carry many messages - grief for your younger self who tried so hard to fit in, sadness about the energy masking requires, or simply emotional release after holding too much for too long. This tenderness is often a sign that your authentic self is emerging.
+                </div>
+                <div class="quick-practice">
+                    <strong>Right now:</strong> Welcome the tears as messengers. Place both hands on your heart and say: "These tears are honoring something important." Ask gently: "What am I grieving right now?" It might be the exhaustion of masking, the loneliness of feeling different, or simply the release after being strong for too long. Let the tears flow - they're clearing space for healing.
+                </div>
+            </div>
+            
+            <div id="result-panicky" class="framework-box hidden">
+                <div class="framework-title">DBT Crisis Survival + Grounding Techniques</div>
+                <div class="framework-description">
+                    Panic often happens when your autistic nervous system detects threat (real or perceived) and your fight/flight response activates intensely. Your brain is trying to protect you, but the alarm system is oversensitive due to years of hypervigilance and masking.
+                </div>
+                <div class="quick-practice">
+                    <strong>Right now:</strong> Ground yourself with 5-4-3-2-1: Notice 5 things you can see, 4 you can touch, 3 you can hear, 2 you can smell, 1 you can taste. Then use bilateral stimulation - cross your arms and pat your shoulders alternately while saying: "I am safe right now. This feeling is temporary. My body is trying to protect me." Focus on lengthening your exhale - breathe in for 4, out for 8.
+                </div>
+            </div>
+            
+            <button class="reset-button" onclick="resetFlowchart()">Start Over</button>
+        </div>
+        
+        <div class="wisdom-note">
+            <strong>Remember:</strong> Recovery is non-linear. You're not trying to become a neurotypical parent - you're learning to be an excellent neurodivergent parent who models self-awareness, emotional honesty, and continuous growth while honoring your neurological reality. Sometimes we need to repeat the same lesson many times before it becomes part of us, and that's not failure - that's how humans learn and heal.
+        </div>
+    </div>
+
+    <script>
+        function showResult(resultType) {
+            // Hide all results first
+            const allResults = document.querySelectorAll('[id^="result-"]');
+            allResults.forEach(result => result.classList.add('hidden'));
+            
+            // Show the selected result
+            const selectedResult = document.getElementById('result-' + resultType);
+            selectedResult.classList.remove('hidden');
+            
+            // Scroll to the result
+            selectedResult.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        
+        function resetFlowchart() {
+            const allResults = document.querySelectorAll('[id^="result-"]');
+            allResults.forEach(result => result.classList.add('hidden'));
+            
+            // Scroll back to top
+            document.getElementById('step1').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
+</html>
